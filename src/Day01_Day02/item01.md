@@ -94,26 +94,37 @@ public class Foo {
     - 의존성 객체 주입도 강력한 서비스 제공자라고 생각할 수 있음.
     - 자바6부터 `java.util.ServiceLoader`라는 범용 서비스 제공자가 프레임워크가 제공되어 프레임워크를 직접 만들 필요가 거의 없어짐.
 
+
 *_정적 팩터리 메서드가 생성자보다 좋은 단점_*
+
 
 `1. 상속을 하러면 public이나 protected 생성자가 필요하니 정적 팩터리 메서드만 제공하면 하위 클래스를 만들 수 없다.`
  : 컬렉션 프레임워크의 유틸리티 구현 클래스들은 상속이 불가.
+ 
 `2. 정적  팩터리 메서드는 프로그래머가 찾기 어렵다.`
  : from (매개 변수를 하나 받아서 해당 타입의 인스터를 반환하는 형변환 메서드)
+ 
   `Date d = Date.from(instant);`
  : of(여러 매겨변수를 받아 적합한 타입의 인스턴스를 반환하는 집게 메서드)
+ 
   `Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);`
  : valueof(from과 of의 더 자세한 버전)
+ 
    `BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);`
  : instance 혹은 getInstance (매개변수를 받는다면 매개변수로 명시된 인스턴스를 반환하지만, 같은 인스턴스임을 보장하지는 않는다.)
+ 
   `StackWalker luke = StaclWalker.getInstance(option);`
  : create 혹은 new Instance (Instance 혹은 getInstance와 같지만, 매번 새로운 인스턴스를 생성해 반환함을 보장한다.)
+ 
   `Object newArray = Array.newInstance(classObject, arrayLen);`
  : getType (getInstance와 같으나, 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 대 쓴다. "Type"은 팩터리 메서드가 반환할 객체의 타입이다.)
+ 
   `FilStore fs = Files.getFilsStore(path);`
   : newType (newInstance와 같으나, 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 대 쓴다. "Type"은 팩터리 메서드가 반환할 객체의 타입이다.)
+  
   `BufferedReader br = Files.newBufferedReader(path);`
   : type (getType과 newType의 간결한 버전)
+  
    `List<Complant> litany = Collections.list(legacyLitnay);`
 
 
