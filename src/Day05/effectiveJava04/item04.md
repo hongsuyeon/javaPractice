@@ -20,6 +20,7 @@ public class test05 extends test04 {
     // test99.sayHello();
 }
 ```
+
 =======>>>>> 인스턴스화를 막는 방법!!!
 ### *_<h3>private 생성자를 추가하면 클래스의 인스턴스화를 막을 수 있다.</h3>_*
 :: 명시적 생성자가 private이니 클래스 바깥에서는 접근이 불가하다.
