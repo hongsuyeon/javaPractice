@@ -21,8 +21,13 @@ public class SpellChecker03 {
     }
 
     public static void main(String[] args) {
-        Lexicon01 lexicon01 = new KoreanDictionary();
-        SpellChecker03 spellChecker = new SpellChecker03(() -> lexicon01);
+        Lexicon01 lexicon01 = new KoreanDictionary01();
+        SpellChecker03 spellChecker = new SpellChecker03(new Supplier<Lexicon01>() {
+            @Override
+            public Lexicon01 get() {
+                return lexicon01;
+            }
+        });
         spellChecker.isValid("hjello");
         /*SpellChecker03 spellChecker = new SpellChecker03(lexicon01);
         spellChecker.isValid("hihihi");*/
@@ -33,3 +38,4 @@ public class SpellChecker03 {
 interface Lexicon01 { }
 
 class KoreanDictionary implements Lexicon01 { }
+class KoreanDictionary01 implements Lexicon01 { }
